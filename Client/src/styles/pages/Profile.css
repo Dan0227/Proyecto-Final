@@ -1,0 +1,145 @@
+/* Estilos generales */
+body {
+    background-image: url('../../img/moto.jpg');
+    background-size: cover; /* Ajusta la imagen para cubrir toda la pantalla */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    color: white; /* Color del texto blanco para contraste */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+  }
+  
+  /* Estilos de la página de perfil */
+  .profile-page {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto; /* Añade más espacio alrededor del contenedor principal */
+    background: rgba(245, 239, 215, 0.2); /* Fondo con transparencia */
+    backdrop-filter: blur(10px); /* Aplica el desenfoque al fondo */
+    border-radius: 12px; /* Bordes más redondeados */
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2); /* Sombra más suave */
+    padding: 40px; /* Más espacio interno */
+    overflow: hidden; /* Asegura que el contenido no se desborde */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Encabezado del perfil */
+  .profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px; /* Añade más espacio debajo del encabezado */
+  }
+  
+  .profile-header .profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+  }
+  
+  .profile-header h1 {
+    margin: 15px 0;
+    color: white;
+  }
+  
+  .profile-header .moto-preferida,
+  .profile-header .metodo-pago {
+    color: white;
+    margin: 8px 0;
+  }
+  
+  /* Navegación del perfil */
+  .profile-nav {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 30px; /* Añade más espacio debajo de la navegación */
+  }
+  
+  .profile-nav button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 15px 25px; /* Más espacio interno */
+  }
+  
+  .profile-nav button:hover {
+    color: #ffc300;
+  }
+  
+  /* Detalles del perfil */
+  .profile-details {
+    width: 100%;
+  }
+  
+  .profile-details h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 25px; /* Añade más espacio debajo del título */
+  }
+  
+  .profile-details .form-group {
+    margin-bottom: 25px; /* Más espacio entre los grupos de formulario */
+  }
+  
+  .profile-details .info-group {
+    margin-bottom: 25px; /* Más espacio entre los grupos de información */
+  }
+  
+  .profile-details label {
+    color: white;
+    display: block;
+    margin-bottom: 10px; /* Más espacio debajo del texto del label */
+  }
+  
+  .profile-details input,
+  .profile-details textarea {
+    display: block;
+    width: 100%;
+    padding: 15px; /* Más espacio interno */
+    margin: 15px 0; /* Más espacio externo */
+    border: 1px solid #ccc;
+    border-radius: 6px; /* Bordes más redondeados */
+    background: rgba(245, 239, 215, 0.3); /* Fondo con más transparencia */
+    color: white;
+  }
+  
+  .profile-details .btn {
+    background-color: #ff5733;
+    color: white;
+    border: none;
+    border-radius: 6px; /* Bordes más redondeados */
+    padding: 15px 30px; /* Más espacio interno */
+    cursor: pointer;
+    display: block;
+    margin: 20px auto; /* Más espacio externo */
+  }
+  
+  .profile-details .btn:hover {
+    background-color: #ffc300;
+    color: #333;
+  }
+  
+  /* Historial de compras */
+  .purchase-history {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .purchase-history li {
+    background: rgba(245, 239, 215, 0.3); /* Fondo con más transparencia */
+    border-radius: 6px; /* Bordes más redondeados */
+    margin: 15px 0; /* Más espacio entre elementos */
+    padding: 15px;
+  }
+  
+  .purchase-history p {
+    margin: 8px 0; /* Más espacio entre líneas de texto */
+  }
+  

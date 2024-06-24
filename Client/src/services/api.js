@@ -20,12 +20,12 @@ export const login = async (correo_electronico, contraseña) => {
 };
 
 export const getProducts = async () => {
-  // try {
-  //   const response = await axios.get(`${API_URL}/productos`);
-  //   return response.data;
-  // } catch (error) {
-  //   throw Error(`Error fetching products: ${error}`);
-  // }
+  try {
+    const response = await axios.get(`${API_URL}/productos`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const createProduct = async (productData) => {
@@ -57,6 +57,44 @@ export const createUser = async (userData) => {
     } else {
       // Ocurrió un error al configurar la solicitud
       console.log('Error al configurar la solicitud:', error.message);
+      throw new Error('Error al configurar la solicitud');
+    }
+  }
+};
+
+// Nueva función para actualizar un producto
+export const updateProduct = async (id_producto, productData) => {
+  try {
+    const response = await axios.put(`${API_URL}/productos/${id_producto}`, productData);
+    return response.data; // Asegúrate de retornar response.data
+  } catch (error) {
+    if (error.response) {
+      console.error('Error al actualizar el producto:', error.response.data);
+      throw new Error(error.response.data.message || 'Error al actualizar el producto');
+    } else if (error.request) {
+      console.error('No se recibió respuesta del servidor:', error.request);
+      throw new Error('No se recibió respuesta del servidor');
+    } else {
+      console.error('Error al configurar la solicitud:', error.message);
+      throw new Error('Error al configurar la solicitud');
+    }
+  }
+};
+
+// Función para eliminar un producto (si no existe, también la añadimos)
+export const deleteProduct = async (id_producto) => {
+  try {
+    const response = await axios.delete(`${API_URL}/productos/${id_producto}`);
+    return response.data; // Asegúrate de retornar response.data
+  } catch (error) {
+    if (error.response) {
+      console.error('Error al eliminar el producto:', error.response.data);
+      throw new Error(error.response.data.message || 'Error al eliminar el producto');
+    } else if (error.request) {
+      console.error('No se recibió respuesta del servidor:', error.request);
+      throw new Error('No se recibió respuesta del servidor');
+    } else {
+      console.error('Error al configurar la solicitud:', error.message);
       throw new Error('Error al configurar la solicitud');
     }
   }

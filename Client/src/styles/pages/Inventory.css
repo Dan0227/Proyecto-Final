@@ -30,7 +30,7 @@ body {
   color: white; /* Cambia el color del texto de los botones */
   border: none; /* Elimina el borde de los botones si lo deseas */
   border-radius: 4px; /* Ajusta el radio del borde si lo deseas */
-  padding: 8px 16px; /* Ajusta el padding si lo deseas */
+  padding: 20px 20px; /* Ajusta el padding si lo deseas */
   cursor: pointer; /* Cambia el cursor al pasar sobre los botones */
   transition: background-color 0.3s, color 0.3s; /* Agrega una transición suave */
 }
@@ -86,4 +86,19 @@ th {
 tr:hover {
   background-color: rgba(245, 239, 215, 0.2); /* Fondo de las filas al pasar el ratón */
   color: white; /* Asegura que el color del texto sea blanco */
+}
+
+.form-label {
+  color: black;
+}
+
+.product-card {
+  width: 250px;
+  height: 400px;
+  margin: 0 auto;
+}
+
+.product-card img {
+  height: 200px;
+  object-fit: cover;
 }

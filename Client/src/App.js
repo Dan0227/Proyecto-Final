@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import AuthContainer from './components/AuthContainer';
 import Inventory from './pages/Inventory';
+import Profile from './pages/Profile';
 import Navbar from './components/Navbar';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/auth" element={<AuthContainer />} />
           <Route path="/inventory" element={<Inventory />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
     </Router>

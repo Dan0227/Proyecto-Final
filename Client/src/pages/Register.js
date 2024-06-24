@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import { createUser } from '../services/api';
 import '../styles/pages/Register.css';
 
@@ -35,7 +34,7 @@ const Register = () => {
 
     const { username, email, password, confirmPassword, firstName, lastName, phone, shippingAddress, profilePicture, roleId } = formData;
 
-    if (!username || !email || !password || !confirmPassword || !firstName || !lastName) {
+    if (!username || !email || !password || !confirmPassword || !firstName || !lastName || !phone) {
       setError('Rellene todos los campos obligatorios');
       setLoading(false);
       setShowError(true);
@@ -43,7 +42,7 @@ const Register = () => {
     }
 
     if (password !== confirmPassword) {
-      setError('Passwords do not match');
+      setError('La contraseña no coincide');
       setLoading(false);
       setShowError(true);
       return;

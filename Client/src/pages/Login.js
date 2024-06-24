@@ -1,39 +1,33 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap'; 
 import { Link } from 'react-router-dom';
-import { login } from '../services/api'; // Importar el método login
 import '../styles/pages/Login.css';
 
 const Login = () => {
-  const [correo_electronico, setCorreoElectronico] = useState('');
-  const [contraseña, setContraseña] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
 
-    if (!correo_electronico || !contraseña) {
+    if (!email || !password) {
       setError('Please fill in all fields');
       setLoading(false);
       return;
     }
 
-    try {
-      console.log('Attempting login with:', { correo_electronico, contraseña });
-      const data = await login(correo_electronico, contraseña);
-      console.log('Login successful', data);
-      localStorage.setItem('token', data.token);
-      // Redirigir a otra página si el login es exitoso
-      // Puedes redirigir a otra ruta usando react-router-dom
-    } catch (err) {
-      console.error('Error during login:', err);
-      setError(err.message);
-    } finally {
+    setTimeout(() => {
       setLoading(false);
-    }
+      if (email === 'user@example.com' && password === 'password') {
+        console.log('Login successful');
+      } else {
+        setError('Invalid email or password');
+      }
+    }, 2000);
   };
 
   const handleCloseAlert = () => {
@@ -54,8 +48,8 @@ const Login = () => {
         <Form.Control
           type="email"
           placeholder="Correo Electrónico"
-          value={correo_electronico}
-          onChange={(e) => setCorreoElectronico(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           className="rounded-input"
         />
       </Form.Group>
@@ -63,8 +57,8 @@ const Login = () => {
         <Form.Control
           type="password"
           placeholder="Contraseña"
-          value={contraseña}
-          onChange={(e) => setContraseña(e.target.value)}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           className="rounded-input"
         />
       </Form.Group>
@@ -78,6 +72,14 @@ const Login = () => {
       </Button>
       <div className="text-center mb-3">
         <Link to="/forgot-password" className="text-decoration-none">Forgot password?</Link>
+      </div>
+      <div className="social-login-buttons text-center">
+        <Button variant="link" className="social-button">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_Facebook_icon.svg/2048px-2023_Facebook_icon.svg.png" alt="Facebook" />
+        </Button>
+        <Button variant="link" className="social-button">
+          <img src="https://services.google.com/fh/files/misc/google_g_icon_download.png" alt="Google" />
+        </Button>
       </div>
     </Form>
   );

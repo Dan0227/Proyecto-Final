@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import '../styles/components/AuthContainer.css';
+import loginImage from '../img/panel-inicio-sesion.jpg'; // Importa la imagen de inicio de sesión
+import registerImage from '../img/panel-registrarse.jpg'; // Importa la imagen de registro
 
 const AuthContainer = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -9,9 +11,6 @@ const AuthContainer = () => {
   const toggleAuthMode = () => {
     setIsLogin(!isLogin);
   };
-
-  const loginImage = "https://img.freepik.com/foto-gratis/hombre-motocicleta-estilo-cafe-racer_23-2148189648.jpg?t=st=1718123165~exp=1718126765~hmac=b75f576ceb9315869a3512e1dc93e211386dd14ecf927523bd2a395892a41c7b&w=740";
-  const registerImage = "https://img.freepik.com/foto-gratis/hombres-motocicleta-dia-invierno_23-2148875783.jpg?t=st=1718139215~exp=1718142815~hmac=045c8cd811f5d28cb8876ed42b67dfe0dac0cc78de38fb709b0d85c611373ecb&w=1380"; // Replace with your register image URL
 
   return (
     <div className="auth-page-container">

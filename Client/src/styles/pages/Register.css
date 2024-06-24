@@ -1,65 +1,74 @@
-/* src/styles/pages/Register.css */
-
 .page-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Ocupa toda la altura de la pantalla */
-  background-image: url('https://img.freepik.com/foto-gratis/mujer-senior-alto-angulo-motocicleta_23-2150909374.jpg?t=st=1718123261~exp=1718126861~hmac=ab90d8cd752156cb2fa0a2385efb6d25b707c7e3f1d6ef2a88c00e51f6ac6c43&w=740'); /* Añade tu imagen de fondo */
-  background-size: cover; /* Ajusta la imagen de fondo para cubrir toda la pantalla */
-  background-position: center; /* Centra la imagen de fondo */
-  background-repeat: no-repeat; /* No repetir la imagen de fondo */
+  height: 100vh;
+  background-image: url('../../img/moto.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .register-container {
-  background: rgba(0, 0, 0, 0.5); /* Fondo más oscuro y translúcido */
-  backdrop-filter: blur(10px); /* Añade un efecto de desenfoque */
-  border-radius: 16px; /* Borde más redondeado */
-  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada */
-  padding: 40px; /* Más espacio interno */
-  max-width: 500px; /* Ancho máximo del formulario */
-  width: 100%; /* Ocupar todo el ancho disponible */
-  color: white; /* Color del texto */
+  border-radius: 16px;
+  padding: 20px;
+  max-width: 500px;
+  width: 105%;
+  color: white;
 }
 
 .register-container h2 {
-  margin-bottom: 30px; /* Más espacio debajo del título */
-  color: #ff5733; /* Color del texto */
-  text-align: center; /* Centrar el título */
-  font-weight: bold; /* Negrita para el título */
-  max-width: 600px; /* Aumenta el ancho del contenedor de registro */
-  padding: 60px; /* Aumenta el padding del contenedor de registro */
-  font-size: 18px; /* Ajusta el tamaño de la fuente */
+  margin-bottom: 30px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
 }
 
 .form-group {
-  margin-bottom: 15px; /* Más espacio entre los elementos */
+  margin-bottom: 15px;
 }
 
 .form-control {
-  border: 1px solid #ff5733; /* Borde sólido de color */
-  border-radius: 8px; /* Bordes redondeados */
-  background-color: rgba(255, 255, 255, 0.1); /* Fondo ligeramente translúcido */
-  color: #ff5733; /* Color del texto */
-  padding: 10px 15px; /* Espacio interno */
-  transition: background-color 0.3s, border-color 0.3s; /* Transiciones suaves */
-  margin-bottom: 20px; /* Separación entre los cuadros de texto */
+  border: 1px solid white;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 10px 15px;
+  transition: background-color 0.3s, border-color 0.3s;
+  margin-bottom: 20px;
+}
+
+.form-control.empty {
+  border-color: red; /* Borde rojo para los campos obligatorios vacíos */
 }
 
 .form-control::placeholder {
-  color: rgba(255, 87, 51, 0.7); /* Color del placeholder */
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .form-control:focus {
-  background-color: rgba(255, 255, 255, 0.2); /* Fondo más claro al enfocar */
-  border-color: #ff0000; /* Borde colorido al enfocar */
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: white;
+}
+
+.password-field {
+  position: relative;
+}
+
+.password-toggle-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: white;
 }
 
 .register-button {
-  background-color: #ff5733; /* Color de fondo original */
-  border: 1px solid #ff5733; /* Borde */
+  background-color: white; /* Color de fondo blanco */
+  border: 1px solid white; /* Borde blanco */
   display: block;
-  color: white; /* Texto blanco */
+  color: black; /* Texto negro */
   width: 100%; /* Ocupar todo el ancho disponible */
   margin-top: 5px; /* Más espacio arriba del botón */
   padding: 10px 0; /* Menos espacio interno para un botón menos "gordo" */
@@ -74,12 +83,12 @@
 }
 
 .register-button:disabled {
-  background-color: #ff5733; /* Mantiene el color cuando está deshabilitado */
+  background-color: white; /* Mantiene el color cuando está deshabilitado */
   opacity: 0.7; /* Menor opacidad */
 }
 
 h2.text-center {
-  margin-bottom: 20px; /* Aumenta el espacio debajo del título */
+  margin-bottom: 20px;
 }
 
 .mr-2 {
@@ -87,33 +96,32 @@ h2.text-center {
 }
 
 .toggle-button-container {
-  margin-top: 20px; /* Ajusta el espacio entre el botón y los campos del formulario */
+  margin-top: 20px;
 }
 
 .toggle-button-container {
-  margin-top: 10px; /* Reduce el espacio entre el botón y el formulario */
+  margin-top: 10px;
 }
 
 .text-center {
-  margin-top: 15px; /* Espacio adicional arriba */
+  margin-top: 15px;
 }
 
 .text-center a {
-  color: #ff5733; /* Color de los enlaces */
-  transition: color 0.3s; /* Transición suave para el cambio de color */
+  color: white;
+  transition: color 0.3s;
 }
 
 .text-center a:hover {
-  color: #ff0000; /* Color de los enlaces al pasar el ratón */
+  color: #ff0000;
 }
 
-/* Estilo para los mensajes de error o información */
 .alert {
-  background: rgba(255, 0, 0, 0.5); /* Fondo rojo translúcido */
-  color: white; /* Texto blanco */
-  border-radius: 8px; /* Borde redondeado */
-  padding: 15px; /* Más espacio interno */
-  margin-bottom: 25px; /* Más espacio debajo */
+  background: rgba(255, 0, 0, 0.5);
+  color: white;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 25px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -125,14 +133,15 @@ h2.text-center {
   cursor: pointer;
 }
 
-.d-flex .form-group {
-  flex: 1;
+.alert-success {
+  background: rgba(0, 128, 0, 0.5);
 }
 
-.d-flex .form-group:first-child {
-  margin-right: 0.5rem;
+/* Separar campos de nombre y apellido */
+.name-container .form-group:first-child {
+  margin-right: 10px;
 }
 
-.d-flex .form-group:last-child {
-  margin-left: 0.5rem;
+.name-container .form-group:last-child {
+  margin-left: 10px;
 }

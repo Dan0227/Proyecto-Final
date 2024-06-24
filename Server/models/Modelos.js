@@ -1,46 +1,44 @@
 const pool = require('../db');
 
-const Modelos = {
+const Productos = {
   async findAll() {
-    console.log('Fetching all models');
-    const [result] = await pool.query('SELECT * FROM modelos');
-    console.log('Result of fetch all query:', result);
+    const [result] = await pool.query('SELECT * FROM productos');
+    result.forEach(product => {
+      if (product.foto_producto) {
+        product.foto_producto = product.foto_producto.toString('base64');
+      }
+    });
     return result;
   },
 
   async findById(id) {
-    console.log(`Fetching model with ID: ${id}`);
-    const [result] = await pool.query('SELECT * FROM modelos WHERE id_modelo = ?', [id]);
-    console.log(`Result of fetch by ID query:`, result);
+    const [result] = await pool.query('SELECT * FROM productos WHERE id_producto = ?', [id]);
+    if (result[0] && result[0].foto_producto) {
+      result[0].foto_producto = result[0].foto_producto.toString('base64');
+    }
     return result[0];
   },
 
-  async create({ id_marca, nombre, año }) {
-    console.log('Creating new model:', { id_marca, nombre, año });
-    const result = await pool.query(
-      'INSERT INTO modelos (id_marca, nombre, año) VALUES (?, ?, ?)',
-      [id_marca, nombre, año]
+  async create({ nombre, descripcion, precio, stock, id_categoria, id_modelo, id_proveedor, descuento, foto_producto }) {
+    const [result] = await pool.query(
+      'INSERT INTO productos (nombre, descripcion, precio, stock, id_categoria, id_modelo, id_proveedor, descuento, foto_producto) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      [nombre, descripcion, precio, stock, id_categoria, id_modelo, id_proveedor, descuento, foto_producto]
     );
-    console.log('Result of create query:', result);
-    return result[0].insertId;
+    return result.insertId;
   },
 
-  async update(id, { id_marca, nombre, año }) {
-    console.log(`Updating model with ID: ${id}`, { id_marca, nombre, año });
-    const result = await pool.query(
-      'UPDATE modelos SET id_marca = ?, nombre = ?, año = ? WHERE id_modelo = ?',
-      [id_marca, nombre, año, id]
+  async update(id, { nombre, descripcion, precio, stock, id_categoria, id_modelo, id_proveedor, descuento, foto_producto }) {
+    const [result] = await pool.query(
+      'UPDATE productos SET nombre = ?, descripcion = ?, precio = ?, stock = ?, id_categoria = ?, id_modelo = ?, id_proveedor = ?, descuento = ?, foto_producto = ? WHERE id_producto = ?',
+      [nombre, descripcion, precio, stock, id_categoria, id_modelo, id_proveedor, descuento, foto_producto, id]
     );
-    console.log('Result of update query:', result);
-    return result[0].affectedRows;
+    return result.affectedRows;
   },
 
   async delete(id) {
-    console.log(`Deleting model with ID: ${id}`);
-    const result = await pool.query('DELETE FROM modelos WHERE id_modelo = ?', [id]);
-    console.log('Result of delete query:', result);
-    return result[0].affectedRows;
+    const [result] = await pool.query('DELETE FROM productos WHERE id_producto = ?', [id]);
+    return result.affectedRows;
   }
 };
 
-module.exports = Modelos;
+module.exports = Productos;

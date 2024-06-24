@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { createUser } from '../services/api';
 import '../styles/pages/Register.css';
 
 const Register = () => {
@@ -11,7 +12,10 @@ const Register = () => {
     confirmPassword: '',
     firstName: '',
     lastName: '',
-    phone: ''
+    phone: '',
+    shippingAddress: '',
+    profilePicture: '',
+    roleId: 2
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -24,13 +28,13 @@ const Register = () => {
     });
   };
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
 
-    // Validación de campos
-    const { username, email, password, confirmPassword, firstName, lastName } = formData;
+    const { username, email, password, confirmPassword, firstName, lastName, phone, shippingAddress, profilePicture, roleId } = formData;
+
     if (!username || !email || !password || !confirmPassword || !firstName || !lastName) {
       setError('Rellene todos los campos obligatorios');
       setLoading(false);
@@ -45,12 +49,42 @@ const Register = () => {
       return;
     }
 
-    // Simulación de la autenticación
-    setTimeout(() => {
+    try {
+      await createUser({
+        username,
+        correo_electronico: email, 
+        contraseña: password,
+        nombre_usuario: firstName,
+        apellido_usuario: lastName,
+        telefono: phone,
+        direccion_envio: shippingAddress,
+        foto_perfil: profilePicture,
+        id_rol: roleId
+      });
+
+      setFormData({
+        username: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        firstName: '',
+        lastName: '',
+        phone: '',
+        shippingAddress: '',
+        profilePicture: '',
+        roleId: 2
+      });
+
       setLoading(false);
-      // Aquí iría la lógica para registrar al usuario
-      console.log('Register successful');
-    }, 2000);
+      console.log('Usuario registrado exitosamente');
+      // Aquí podrías redirigir al usuario a otra página o mostrar un mensaje de éxito
+
+    } catch (error) {
+      console.error('Error al registrar usuario:', error.message);
+      setError('Error al registrar usuario. Inténtelo de nuevo más tarde.');
+      setLoading(false);
+      setShowError(true);
+    }
   };
 
   const handleCloseError = () => {
@@ -59,7 +93,7 @@ const Register = () => {
 
   return (
     <Form onSubmit={handleRegister}>
-      <h2 className="text-center">Register</h2>
+      <h2 className="text-center">Registrar</h2>
       {showError && (
         <Alert variant="danger" onClick={handleCloseError} className="alert">
           {error}
@@ -68,7 +102,7 @@ const Register = () => {
       <Form.Group controlId="formBasicUsername">
         <Form.Control
           type="text"
-          placeholder="Username"
+          placeholder="Usuario"
           name="username"
           value={formData.username}
           onChange={handleChange}
@@ -78,7 +112,7 @@ const Register = () => {
       <Form.Group controlId="formBasicEmail">
         <Form.Control
           type="email"
-          placeholder="Enter email"
+          placeholder="Correo electronico"
           name="email"
           value={formData.email}
           onChange={handleChange}
@@ -89,7 +123,7 @@ const Register = () => {
         <Form.Group controlId="formBasicFirstName" className="mr-2">
           <Form.Control
             type="text"
-            placeholder="First Name"
+            placeholder="Nombre"
             name="firstName"
             value={formData.firstName}
             onChange={handleChange}
@@ -100,7 +134,7 @@ const Register = () => {
         <Form.Group controlId="formBasicLastName">
           <Form.Control
             type="text"
-            placeholder="Last Name"
+            placeholder="Apellido"
             name="lastName"
             value={formData.lastName}
             onChange={handleChange}
@@ -112,7 +146,7 @@ const Register = () => {
       <Form.Group controlId="formBasicPhone">
         <Form.Control
           type="text"
-          placeholder="Phone (optional)"
+          placeholder="Telefono"
           name="phone"
           value={formData.phone}
           onChange={handleChange}
@@ -122,7 +156,7 @@ const Register = () => {
       <Form.Group controlId="formBasicPassword">
         <Form.Control
           type="password"
-          placeholder="Password"
+          placeholder="Contraseña"
           name="password"
           value={formData.password}
           onChange={handleChange}
@@ -132,7 +166,7 @@ const Register = () => {
       <Form.Group controlId="formBasicConfirmPassword">
         <Form.Control
           type="password"
-          placeholder="Confirm Password"
+          placeholder="Confirmar contraseña"
           name="confirmPassword"
           value={formData.confirmPassword}
           onChange={handleChange}
@@ -145,11 +179,8 @@ const Register = () => {
         className="register-button"
         disabled={loading}
       >
-        {loading ? 'Loading...' : 'Register'}
+        {loading ? 'Cargando...' : 'Registrar'}
       </Button>
-      <div className="text-center mt-3">
-        <Link to="/login" className="text-decoration-none">Already have an account? Login</Link>
-      </div>
     </Form>
   );
 };

@@ -107,7 +107,6 @@ Cliente/
 │ └── manifest.json
 ├── src/
 │ ├── components/
-│ │ ├── LoginForm.js
 │ │ └── AuthContainer.js
 │ │ └── Navbar.js
 │ │ └── OrderList.js
@@ -140,7 +139,6 @@ Servidor/
 │ └── Productos.js
 │ └── Proveedores.js
 │ └── Roles.js
-│ └── TipoDoc.js
 │ └── Usuario.js
 ├── node_modulels/
 ├── routes/
@@ -152,7 +150,6 @@ Servidor/
 │ └── productos.js
 │ └── proveedores.js
 │ └── roles.js
-│ └── tipoDoc.js
 │ └── usuatios.js
 ├── db.js
 ├── package.json

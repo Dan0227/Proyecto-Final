@@ -19,6 +19,8 @@ export const login = async (correo_electronico, contraseña) => {
   }
 };
 
+
+
 export const getProducts = async () => {
   try {
     const response = await axios.get(`${API_URL}/productos`);

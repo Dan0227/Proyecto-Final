@@ -62,12 +62,6 @@ CREATE TABLE roles (
     nombre VARCHAR(50)
 );
 
--- Tabla de tipos de documento
-CREATE TABLE tipo_doc (
-    id_tipo_doc INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(50)
-);
-
 -- Tabla de usuarios
 CREATE TABLE usuarios (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
@@ -76,15 +70,10 @@ CREATE TABLE usuarios (
     apellido_usuario VARCHAR(50) NOT NULL,
     contraseña VARCHAR(255) NOT NULL,
     correo_electronico VARCHAR(100) NOT NULL,
-    id_tipo_doc INT,
-    FOREIGN KEY (id_tipo_doc) REFERENCES tipo_doc(id_tipo_doc),
     id_rol INT,
     FOREIGN KEY (id_rol) REFERENCES roles(id_rol),
-    identificacion VARCHAR(50),
-    direccion VARCHAR(100),
-    telefono VARCHAR(15),
+    telefono VARCHAR(15) NOT NULL,
     direccion_envio VARCHAR(100),
-    direccion_entrega_por_defecto VARCHAR(100),
     foto_perfil BLOB,
     INDEX idx_nombre_usuario (nombre_usuario),
     INDEX idx_correo_electronico (correo_electronico)

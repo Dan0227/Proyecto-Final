@@ -1,4 +1,3 @@
-// routes/usuarios.js
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const Usuario = require('../models/Usuario');
@@ -8,7 +7,7 @@ const pool = require('../db');
 const router = express.Router();
 const secretKey = 'your_secret_key';
 
-// crear usuario
+// Crear usuario
 router.post('/', async (req, res) => {
   const {
     username,
@@ -16,13 +15,9 @@ router.post('/', async (req, res) => {
     apellido_usuario,
     contraseña,
     correo_electronico,
-    id_tipo_doc,
     id_rol,
-    identificacion,
-    direccion,
     telefono,
     direccion_envio,
-    direccion_entrega_por_defecto,
     foto_perfil
   } = req.body;
 
@@ -34,13 +29,9 @@ router.post('/', async (req, res) => {
       apellido_usuario,
       contraseña,
       correo_electronico,
-      id_tipo_doc,
       id_rol,
-      identificacion,
-      direccion,
       telefono,
       direccion_envio,
-      direccion_entrega_por_defecto,
       foto_perfil
     });
     console.log('Usuario created with ID:', id);
@@ -92,13 +83,9 @@ router.put('/:id', async (req, res) => {
     apellido_usuario,
     contraseña,
     correo_electronico,
-    id_tipo_doc,
     id_rol,
-    identificacion,
-    direccion,
     telefono,
     direccion_envio,
-    direccion_entrega_por_defecto,
     foto_perfil
   } = req.body;
 
@@ -110,13 +97,9 @@ router.put('/:id', async (req, res) => {
       apellido_usuario,
       contraseña,
       correo_electronico,
-      id_tipo_doc,
       id_rol,
-      identificacion,
-      direccion,
       telefono,
       direccion_envio,
-      direccion_entrega_por_defecto,
       foto_perfil
     });
     if (affectedRows === 0) {

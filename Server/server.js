@@ -18,7 +18,6 @@ app.use('/api/productos_pedidos', require('./routes/productoPedido'));
 app.use('/api/productos', require('./routes/productos'));
 app.use('/api/proveedores', require('./routes/proveedores'));
 app.use('/api/roles', require('./routes/roles'));
-app.use('/api/tipo_doc', require('./routes/tipoDoc'));
 app.use('/api/usuarios', require('./routes/usuarios'));
 
 app.listen(port, () => {

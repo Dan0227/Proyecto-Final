@@ -1,4 +1,3 @@
-// models/Usuario.js
 const pool = require('../db');
 const bcrypt = require('bcryptjs');
 
@@ -10,13 +9,9 @@ const Usuario = {
       apellido_usuario,
       contraseña,
       correo_electronico,
-      id_tipo_doc,
       id_rol,
-      identificacion,
-      direccion,
       telefono,
       direccion_envio,
-      direccion_entrega_por_defecto,
       foto_perfil,
     } = data;
 
@@ -24,9 +19,9 @@ const Usuario = {
     const hashedPassword = await bcrypt.hash(contraseña, salt);
 
     const [result] = await pool.query(
-      `INSERT INTO usuarios (username, nombre_usuario, apellido_usuario, contraseña, correo_electronico, id_tipo_doc, id_rol, identificacion, direccion, telefono, direccion_envio, direccion_entrega_por_defecto, foto_perfil) 
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      [username, nombre_usuario, apellido_usuario, hashedPassword, correo_electronico, id_tipo_doc, id_rol, identificacion, direccion, telefono, direccion_envio, direccion_entrega_por_defecto, foto_perfil]
+      `INSERT INTO usuarios (username, nombre_usuario, apellido_usuario, contraseña, correo_electronico, id_rol, telefono, direccion_envio, foto_perfil) 
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [username, nombre_usuario, apellido_usuario, hashedPassword, correo_electronico, id_rol, telefono, direccion_envio, foto_perfil]
     );
 
     return result.insertId;
@@ -49,18 +44,14 @@ const Usuario = {
       apellido_usuario,
       contraseña,
       correo_electronico,
-      id_tipo_doc,
       id_rol,
-      identificacion,
-      direccion,
       telefono,
       direccion_envio,
-      direccion_entrega_por_defecto,
       foto_perfil,
     } = data;
 
-    let updateQuery = `UPDATE usuarios SET username = ?, nombre_usuario = ?, apellido_usuario = ?, correo_electronico = ?, id_tipo_doc = ?, id_rol = ?, identificacion = ?, direccion = ?, telefono = ?, direccion_envio = ?, direccion_entrega_por_defecto = ?, foto_perfil = ?`;
-    const updateValues = [username, nombre_usuario, apellido_usuario, correo_electronico, id_tipo_doc, id_rol, identificacion, direccion, telefono, direccion_envio, direccion_entrega_por_defecto, foto_perfil];
+    let updateQuery = `UPDATE usuarios SET username = ?, nombre_usuario = ?, apellido_usuario = ?, correo_electronico = ?, id_rol = ?, telefono = ?, direccion_envio = ?, foto_perfil = ?`;
+    const updateValues = [username, nombre_usuario, apellido_usuario, correo_electronico, id_rol, telefono, direccion_envio, foto_perfil];
 
     if (contraseña) {
       const salt = await bcrypt.genSalt(10);

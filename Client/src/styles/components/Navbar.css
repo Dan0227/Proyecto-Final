@@ -1,0 +1,33 @@
+.custom-navbar {
+    border-bottom: 2px solid #ff5733; /* Primary border color */
+  }
+  
+  .nav-link-custom {
+    position: relative;
+    padding-bottom: 5px;
+  }
+  
+  .nav-link-custom::before,
+  .nav-link-custom::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    background: linear-gradient(90deg, #ff5733, #ff0000);
+    transition: all 0.3s;
+  }
+  
+  .nav-link-custom::before {
+    left: 50%;
+  }
+  
+  .nav-link-custom::after {
+    right: 50%;
+  }
+  
+  .nav-link-custom:hover::before,
+  .nav-link-custom:hover::after {
+    width: 50%;
+  }
+  

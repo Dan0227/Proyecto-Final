@@ -1,0 +1,89 @@
+/* Estilos generales */
+body {
+  background-image: url('../../img/moto.jpg');
+  background-size: cover; /* Ajusta la imagen para cubrir toda la pantalla */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  color: white; /* Color del texto blanco para contraste */
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+  margin: 0;
+}
+
+/* Estilos de las cartas y formularios */
+.card, .form {
+  background: rgba(245, 239, 215, 0.2); /* Fondo de las cartas y formularios con transparencia */
+  backdrop-filter: blur(10px); /* Aplica el desenfoque al fondo */
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1); /* Sombra con transparencia */
+  padding: 20px;
+  margin: 15px; /* Ajusta el espacio entre las cartas */
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden; /* Asegura que el contenido no se desborde */
+  color: white;
+}
+
+/* Botones dentro de las cartas y formularios */
+.card button, .form button {
+  background-color: #ff5733; /* Cambia el color de fondo de los botones */
+  color: white; /* Cambia el color del texto de los botones */
+  border: none; /* Elimina el borde de los botones si lo deseas */
+  border-radius: 4px; /* Ajusta el radio del borde si lo deseas */
+  padding: 8px 16px; /* Ajusta el padding si lo deseas */
+  cursor: pointer; /* Cambia el cursor al pasar sobre los botones */
+  transition: background-color 0.3s, color 0.3s; /* Agrega una transición suave */
+}
+
+.card button:hover, .form button:hover {
+  background-color: #ff0000; /* Color de fondo al pasar el ratón */
+  color: #333; /* Color del texto al pasar el ratón */
+}
+
+/* Estilos del formulario */
+.form input,
+.form textarea {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo de los inputs con transparencia */
+  color: #333; /* Color del texto */
+}
+
+/* Estilos de la tabla */
+.table-container {
+  background: rgba(245, 239, 215, 0.2); /* Fondo de la tabla con transparencia */
+  backdrop-filter: blur(10px); /* Aplica el desenfoque al fondo */
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1); /* Sombra con transparencia */
+  padding: 20px;
+  margin: 30px auto;
+  max-width: 80%;
+  color: white; /* Color del texto dentro de la tabla */
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: white; /* Color del texto dentro de la tabla */
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  color: white; /* Asegura que el color del texto sea blanco */
+}
+
+th {
+  background-color: rgba(245, 239, 215, 0.3); /* Fondo de los encabezados de la tabla con transparencia */
+  color: white; /* Asegura que el color del texto sea blanco */
+}
+
+tr:hover {
+  background-color: rgba(245, 239, 215, 0.2); /* Fondo de las filas al pasar el ratón */
+  color: white; /* Asegura que el color del texto sea blanco */
+}

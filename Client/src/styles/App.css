@@ -1,0 +1,13 @@
+body {
+  background-color: #f8f9fa;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2 {
+  font-family: 'Bebas Neue', cursive;
+  color: #ff5733;
+}
+
+footer {
+  background-color: #343a40;
+}

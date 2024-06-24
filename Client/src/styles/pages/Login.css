@@ -1,0 +1,134 @@
+/* src/styles/pages/Login.css */
+
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+  background-image: url('../../img/moto.jpg');
+  background-size: cover; /* Ajusta la imagen de fondo para cubrir toda la pantalla */
+  background-position: center; /* Centra la imagen de fondo */
+  background-repeat: no-repeat; /* No repetir la imagen de fondo */
+}
+
+.login-container {
+  background: rgba(0, 0, 0, 0.5); /* Fondo más oscuro y translúcido */
+  backdrop-filter: blur(10px); /* Añade un efecto de desenfoque */
+  border-radius: 16px; /* Borde más redondeado */
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada */
+  max-width: 600px; /* Aumenta el ancho del contenedor de login */
+  padding: 60px; /* Aumenta el padding del contenedor de login */
+  font-size: 18px; /* Ajusta el tamaño de la fuente */
+  width: 100%; /* Ocupar todo el ancho disponible */
+  color: white; /* Color del texto */
+}
+
+.login-container h2 {
+  margin-bottom: 30px; /* Más espacio debajo del título */
+  color: #ff5733; /* Color del texto */
+  text-align: center; /* Centrar el título */
+  font-size: 2.5em; /* Tamaño de letra más grande */
+  font-weight: bold; /* Negrita para el título */
+}
+
+.form-group {
+  margin-bottom: 35px; /* Más espacio entre los elementos */
+}
+
+.form-control {
+  border: 1px solid #ff5733; /* Borde sólido de color */
+  border-radius: 8px; /* Bordes redondeados */
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo ligeramente translúcido */
+  color: #ff5733; /* Color del texto */
+  padding: 10px 15px; /* Espacio interno */
+  transition: background-color 0.3s, border-color 0.3s; /* Transiciones suaves */
+  margin-bottom: 20px; /* Separación entre los cuadros de texto */
+  width: 100%;
+}
+
+.form-control::placeholder {
+  color: rgba(255, 87, 51, 0.7); /* Color del placeholder */
+}
+
+.form-control:focus {
+  background-color: rgba(255, 255, 255, 0.2); /* Fondo más claro al enfocar */
+  border-color: #ff0000; /* Borde colorido al enfocar */
+}
+
+.login-button {
+  background-color: #ff5733; /* Color de fondo original */
+  border: 1px solid #ff5733; /* Borde */
+  color: white; /* Texto blanco */
+  width: 100%; /* Ocupar todo el ancho disponible */
+  padding: 10px 0; /* Menos espacio interno para un botón menos "gordo" */
+  font-size: 18px; /* Texto más grande */
+  transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Transiciones suaves */
+  width: 100%;;
+}
+
+.login-button:hover {
+  background-color: #ff0000; /* Color de fondo al pasar el ratón */
+  color: white; /* Color del texto al pasar el ratón */
+  transform: scale(1.05); /* Ligeramente más grande al pasar el ratón */
+}
+
+.login-button:disabled {
+  background-color: #ff5733; /* Mantiene el color cuando está deshabilitado */
+  opacity: 0.7; /* Menor opacidad */
+}
+
+.text-center {
+  margin-top: 15px; /* Espacio adicional arriba */
+}
+
+.text-center a {
+  color: #ff5733; /* Color de los enlaces */
+  transition: color 0.3s; /* Transición suave para el cambio de color */
+}
+
+.text-center a:hover {
+  color: #ff0000; /* Color de los enlaces al pasar el ratón */
+}
+
+/* Estilo para los mensajes de error o información */
+.custom-alert {
+  background: rgba(255, 0, 0, 0.5); /* Fondo rojo translúcido */
+  color: white; /* Texto blanco */
+  border-radius: 8px; /* Borde redondeado */
+  padding: 15px; /* Más espacio interno */
+  margin-bottom: 25px; /* Más espacio debajo */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  width: 80%;
+  max-width: 400px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.alert-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.social-login-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.social-button {
+  background: none;
+}
+
+.social-button img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}

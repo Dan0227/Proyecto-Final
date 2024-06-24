@@ -1,0 +1,76 @@
+/* src/styles/pages/AuthContainer.css */
+
+.auth-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.auth-content {
+  position: relative;
+  width: 1000px; /* Ajusta el ancho del contenedor principal según tus necesidades */
+  height: 600px; /* Ajusta la altura del contenedor principal según tus necesidades */
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+  border-radius: 15px; /* Bordes redondeados */
+  overflow: hidden;
+}
+
+.auth-form {
+  width: 60%; /* Ajusta el ancho del formulario */
+  padding: 20px; /* Ajusta el padding del formulario */
+  font-size: 16px; /* Ajusta el tamaño de la fuente */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(245, 239, 215, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.1);
+}
+
+.auth-cover {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s ease-in-out;
+  border-radius: 15px; /* Bordes redondeados */
+  overflow: hidden;
+}
+
+.auth-content.show-register .auth-cover {
+  transform: translateX(100%);
+}
+
+.auth-content.show-login .auth-cover {
+  transform: translateX(0);
+}
+
+.toggle-button {
+  background-color: #ff5733;
+  border: 1px solid #ff5733;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.toggle-button-container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente el botón */
+  align-items: center; /* Centra verticalmente el botón */
+  height: 100%; /* Asegura que el contenedor ocupe toda la altura del padre */
+}
+
+.toggle-button:hover {
+  background-color: #ff0000;
+  border-color: #ff0000;
+}

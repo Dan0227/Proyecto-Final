@@ -1,0 +1,74 @@
+/* Estilos generales para Home */
+.home-body {
+  background-image: url('../../img/moto.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+/* Estilos de las cartas */
+.card {
+  background: rgba(245, 239, 215, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  margin: 0 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+}
+
+.slick-center .card {
+  transform: scale(1.1);
+  z-index: 1;
+  box-shadow: 0px 0px 20px #ffffff33;
+  border-radius: 8px;
+}
+
+.card button {
+  background-color: #ff5733;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Estilos del carrusel */
+.slick-slider {
+  overflow: hidden;
+}
+
+.slick-list {
+  padding: 40px 0;
+  overflow: hidden;
+}
+
+.slick-prev,
+.slick-next {
+  color: white !important;
+  z-index: 2;
+}
+
+.slick-prev {
+  left: -25px;
+}
+
+.slick-next {
+  right: -25px;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  color: #ff5733 !important;
+}
+
+.slick-dots li button:before {
+  color: white !important;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #ff5733 !important;
+}

@@ -1,104 +1,178 @@
-/* Estilos generales */
+/* General Styles */
 body {
-  background-image: url('../../img/moto.jpg');
-  background-size: cover; /* Ajusta la imagen para cubrir toda la pantalla */
-  background-position: center; /* Centra la imagen */
-  background-repeat: no-repeat; /* Evita que la imagen se repita */
-  color: white; /* Color del texto blanco para contraste */
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; /* Ocupa toda la altura de la pantalla */
-  margin: 0;
-}
-
-/* Estilos de las cartas y formularios */
-.card, .form {
-  background: rgba(245, 239, 215, 0.2); /* Fondo de las cartas y formularios con transparencia */
-  backdrop-filter: blur(10px); /* Aplica el desenfoque al fondo */
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1); /* Sombra con transparencia */
-  padding: 20px;
-  margin: 15px; /* Ajusta el espacio entre las cartas */
-  transition: transform 0.3s, box-shadow 0.3s;
-  overflow: hidden; /* Asegura que el contenido no se desborde */
+  font-family: 'Arial', sans-serif;
+  background-image: url('../../img/moto.jpg'); /* Ajusta la ruta según la ubicación de la imagen */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: white;
 }
 
-/* Botones dentro de las cartas y formularios */
-.card button, .form button {
-  background-color: #ff5733; /* Cambia el color de fondo de los botones */
-  color: white; /* Cambia el color del texto de los botones */
-  border: none; /* Elimina el borde de los botones si lo deseas */
-  border-radius: 4px; /* Ajusta el radio del borde si lo deseas */
-  padding: 20px 20px; /* Ajusta el padding si lo deseas */
-  cursor: pointer; /* Cambia el cursor al pasar sobre los botones */
-  transition: background-color 0.3s, color 0.3s; /* Agrega una transición suave */
-}
-
-.card button:hover, .form button:hover {
-  background-color: #ff0000; /* Color de fondo al pasar el ratón */
-  color: #333; /* Color del texto al pasar el ratón */
-}
-
-/* Estilos del formulario */
-.form input,
-.form textarea {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: rgba(255, 255, 255, 0.8); /* Fondo de los inputs con transparencia */
-  color: #333; /* Color del texto */
-}
-
-/* Estilos de la tabla */
-.table-container {
-  background: rgba(245, 239, 215, 0.2); /* Fondo de la tabla con transparencia */
-  backdrop-filter: blur(10px); /* Aplica el desenfoque al fondo */
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1); /* Sombra con transparencia */
+/* Container for Inventory Page */
+.inventory-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
-  margin: 30px auto;
-  max-width: 80%;
-  color: white; /* Color del texto dentro de la tabla */
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 16px;
+  max-width: 1200px;
+  margin: 50px auto;
 }
 
-.table {
+/* Header Styles */
+.inventory-header {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Form Styles */
+.inventory-form {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  border-collapse: collapse;
-  color: white; /* Color del texto dentro de la tabla */
+  max-width: 500px;
 }
 
-th, td {
-  padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-  color: white; /* Asegura que el color del texto sea blanco */
+.inventory-form .form-group {
+  margin-bottom: 15px;
 }
 
-th {
-  background-color: rgba(245, 239, 215, 0.3); /* Fondo de los encabezados de la tabla con transparencia */
-  color: white; /* Asegura que el color del texto sea blanco */
+.inventory-form .form-control {
+  border: 1px solid white;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 10px 15px;
+  transition: background-color 0.3s, border-color 0.3s;
 }
 
-tr:hover {
-  background-color: rgba(245, 239, 215, 0.2); /* Fondo de las filas al pasar el ratón */
-  color: white; /* Asegura que el color del texto sea blanco */
+.inventory-form .form-control:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: white;
 }
 
-.form-label {
-  color: black;
+.inventory-form .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  border-radius: 8px;
+  padding: 10px 15px;
+  transition: background-color 0.3s, border-color 0.3s;
 }
 
-.product-card {
-  width: 250px;
-  height: 400px;
-  margin: 0 auto;
+.inventory-form .btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
 }
 
-.product-card img {
-  height: 200px;
-  object-fit: cover;
+/* Card Styles */
+.card {
+  
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+}
+
+.card img {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.card .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  border-radius: 8px;
+  padding: 10px 15px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.card .btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* Modal Styles */
+.modal-content {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  border-radius: 8px;
+}
+
+.modal-header, .modal-footer {
+  border: none;
+}
+
+.modal-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.modal-body .form-group {
+  margin-bottom: 15px;
+}
+
+.modal-body .form-control {
+  border: 1px solid white;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 10px 15px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.modal-body .form-control:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: white;
+}
+
+.modal-footer .btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  border-radius: 8px;
+  padding: 10px 15px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.modal-footer .btn-secondary:hover {
+  background-color: #565e64;
+  border-color: #565e64;
+}
+
+.modal-footer .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  border-radius: 8px;
+  padding: 10px 15px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.modal-footer .btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.modal-footer .btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  border-radius: 8px;
+  padding: 10px 15px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.modal-footer .btn-danger:hover {
+  background-color: #c82333;
+  border-color: #c82333;
 }

@@ -1,41 +1,44 @@
-// src/pages/Login.js
-
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
-import AuthContext from '../context/AuthContext';
-import { login as loginService } from '../services/api';
+import { Link } from 'react-router-dom';
+import { login } from '../services/api';
 import '../styles/pages/Login.css';
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [correo_electronico, setCorreoElectronico] = useState('');
+  const [contraseña, setContraseña] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
 
-    if (!email || !password) {
-      setError('Por favor complete todos los campos');
+    if (!correo_electronico || !contraseña) {
+      setError('Por favor rellene todos los campos');
       setLoading(false);
       return;
     }
 
     try {
-      const response = await loginService(email, password);
-      login(response.token, response.id_rol);
-      setLoading(false);
-      navigate('/');
-    } catch (error) {
-      setError('Correo electrónico o contraseña incorrectos');
+      const data = await login(correo_electronico, contraseña);
+      localStorage.setItem('token', data.token);
+    } catch (err) {
+      setError(err.message);
+    } finally {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => {
+        setError('');
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
 
   return (
     <Form onSubmit={handleLogin} className="login-form">
@@ -51,8 +54,8 @@ const Login = () => {
         <Form.Control
           type="email"
           placeholder="Correo Electrónico"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={correo_electronico}
+          onChange={(e) => setCorreoElectronico(e.target.value)}
           className="rounded-input"
         />
       </Form.Group>
@@ -60,8 +63,8 @@ const Login = () => {
         <Form.Control
           type="password"
           placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={contraseña}
+          onChange={(e) => setContraseña(e.target.value)}
           className="rounded-input"
         />
       </Form.Group>
@@ -71,10 +74,10 @@ const Login = () => {
         className="login-button"
         disabled={loading}
       >
-        {loading ? 'Cargando...' : 'Iniciar Sesión'}
+        {loading ? 'Cargando...' : 'Iniciar Sesion'}
       </Button>
       <div className="text-center mb-3">
-        <Link to="/forgot-password" className="text-decoration-none">¿Olvidó su contraseña?</Link>
+        <Link to="/forgot-password" className="text-decoration-none">¿Ha olvidado su contraseña?</Link>
       </div>
     </Form>
   );

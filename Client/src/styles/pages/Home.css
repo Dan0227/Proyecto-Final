@@ -1,4 +1,15 @@
 /* Estilos generales para Home */
+
+h1 {
+  font-family: Georgia, serif;
+  font-weight: bold; /* Opcional: ajusta el peso de la fuente */
+}
+
+p {
+  font-family: Georgia, serif;
+  line-height: 1.5; /* Opcional: ajusta el interlineado */
+}
+
 .home-body {
   background-image: url('../../img/moto.jpg');
   background-size: cover;

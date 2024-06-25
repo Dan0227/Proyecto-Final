@@ -52,11 +52,6 @@ const Home = () => {
 
   return (
     <Container className="mt-5">
-      <Row className="mb-4">
-        <Col>
-          <SearchBar onSearch={handleSearch} />
-        </Col>
-      </Row>
       <Row className="text-center">
         <Col>
           <h1>Bienvenidos a Motos Indian</h1>
@@ -74,7 +69,7 @@ const Home = () => {
                   <Card.Text>
                     Pieza de motocicleta de alta calidad para garantizar una conducción suave y segura.
                   </Card.Text>
-                  <Button variant="primary">View Details</Button>
+                  <Button variant="primary">Ver Detalles</Button>
                 </Card.Body>
               </Card>
             </div>
@@ -86,7 +81,7 @@ const Home = () => {
                   <Card.Text>
                     Piezas fiables y duraderas para todas las marcas de motocicletas.
                   </Card.Text>
-                  <Button variant="primary">View Details</Button>
+                  <Button variant="primary">Ver Detalles</Button>
                 </Card.Body>
               </Card>
             </div>
@@ -98,7 +93,7 @@ const Home = () => {
                   <Card.Text>
                     Accesorios de primera calidad para mejorar su experiencia de conducción.
                   </Card.Text>
-                  <Button variant="primary">View Details</Button>
+                  <Button variant="primary">Ver Detalles</Button>
                 </Card.Body>
               </Card>
             </div>
@@ -110,7 +105,7 @@ const Home = () => {
                   <Card.Text>
                     Producto de primera con las mejores prestaciones y calidad.
                   </Card.Text>
-                  <Button variant="primary">View Details</Button>
+                  <Button variant="primary">Ver Detalles</Button>
                 </Card.Body>
               </Card>
             </div>
@@ -122,7 +117,7 @@ const Home = () => {
                   <Card.Text>
                     Mejore el rendimiento de su moto con este producto de primera calidad.
                   </Card.Text>
-                  <Button variant="primary">View Details</Button>
+                  <Button variant="primary">Ver Detalles</Button>
                 </Card.Body>
               </Card>
             </div>
@@ -143,7 +138,7 @@ const Home = () => {
               <Card.Text>
                 Producto de primera con las mejores prestaciones y calidad.
               </Card.Text>
-              <Button variant="primary">View Details</Button>
+              <Button variant="primary">Ver Detalles</Button>
             </Card.Body>
           </Card>
         </Col>
@@ -155,7 +150,7 @@ const Home = () => {
               <Card.Text>
                 Mejore el rendimiento de su moto con este producto de primera calidad.
               </Card.Text>
-              <Button variant="primary">View Details</Button>
+              <Button variant="primary">Ver Detalles</Button>
             </Card.Body>
           </Card>
         </Col>
@@ -167,7 +162,7 @@ const Home = () => {
               <Card.Text>
                 La mejor elección por su durabilidad y fiabilidad.
               </Card.Text>
-              <Button variant="primary">View Details</Button>
+              <Button variant="primary">Ver Detalles</Button>
             </Card.Body>
           </Card>
         </Col>
@@ -184,7 +179,7 @@ const Home = () => {
               <Card.Text>
                 "Excelente servicio y productos de primera calidad. Mi moto funciona mejor que nunca".
               </Card.Text>
-              <Card.Footer>- Customer 1</Card.Footer>
+              <Card.Footer>- Comentario 1</Card.Footer>
             </Card.Body>
           </Card>
         </Col>
@@ -194,7 +189,7 @@ const Home = () => {
               <Card.Text>
                 "Un gran lugar para encontrar lo que necesitas para tu moto. Muy recomendable".
               </Card.Text>
-              <Card.Footer>- Customer 2</Card.Footer>
+              <Card.Footer>- Comentario 2</Card.Footer>
             </Card.Body>
           </Card>
         </Col>
@@ -204,7 +199,7 @@ const Home = () => {
               <Card.Text>
                 "Fantásticos productos a precios inmejorables. Mi tienda de referencia para piezas de bicicleta".
               </Card.Text>
-              <Card.Footer>- Customer 3</Card.Footer>
+              <Card.Footer>- Comentario 3</Card.Footer>
             </Card.Body>
           </Card>
         </Col>

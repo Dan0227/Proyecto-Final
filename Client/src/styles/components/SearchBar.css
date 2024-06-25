@@ -2,8 +2,8 @@
 
 .search-bar {
     display: flex;
-    align-items: center; /* Center vertically */
-    height: 40px; /* Define a fixed height */
+    align-items: center; /* Centrar verticalmente */
+    height: 40px; /* Altura fija */
   }
   
   .form-control {
@@ -20,5 +20,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 15px; /* Adjust padding as needed */
-  }  
+    padding: 0 15px; /* Ajustar el padding según sea necesario */
+    background-color: white; /* Fondo blanco inicial */
+    color: black; /* Texto negro inicial */
+    border: 1px solid #ced4da; /* Borde para resaltar el botón */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave */
+  }
+  
+  .search-button:hover {
+    background-color: #ff5733; /* Fondo rojo al pasar el mouse */
+    color: white; /* Texto blanco al pasar el mouse */
+  }
+  

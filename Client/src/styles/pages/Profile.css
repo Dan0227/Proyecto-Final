@@ -8,6 +8,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+    font-family: Georgia, serif;
   }
   
   /* Estilos de la página de perfil */
@@ -24,6 +25,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: Georgia, serif;
   }
   
   /* Encabezado del perfil */
@@ -32,6 +34,7 @@ body {
     flex-direction: column;
     align-items: center;
     margin-bottom: 30px; /* Añade más espacio debajo del encabezado */
+    font-family: Georgia, serif;
   }
   
   .profile-header .profile-picture {

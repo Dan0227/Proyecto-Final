@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
 import Slider from 'react-slick';
 import '../styles/pages/Home.css';
+import SearchBar from '../components/SearchBar'; // Importa el componente SearchBar
 
 const Home = () => {
   useEffect(() => {
@@ -43,8 +44,19 @@ const Home = () => {
     ],
   };
 
+  const handleSearch = (searchTerm) => {
+    // Lógica para manejar la búsqueda
+    console.log(`Buscando: ${searchTerm}`);
+    // Aquí podrías añadir la lógica para redirigir a una página de resultados de búsqueda
+  };
+
   return (
     <Container className="mt-5">
+      <Row className="mb-4">
+        <Col>
+          <SearchBar onSearch={handleSearch} />
+        </Col>
+      </Row>
       <Row className="text-center">
         <Col>
           <h1>Bienvenidos a Motos Indian</h1>
@@ -60,7 +72,7 @@ const Home = () => {
                 <Card.Body>
                   <Card.Title>Producto 1</Card.Title>
                   <Card.Text>
-                  Pieza de motocicleta de alta calidad para garantizar una conducción suave y segura.
+                    Pieza de motocicleta de alta calidad para garantizar una conducción suave y segura.
                   </Card.Text>
                   <Button variant="primary">View Details</Button>
                 </Card.Body>
@@ -72,7 +84,7 @@ const Home = () => {
                 <Card.Body>
                   <Card.Title>Producto 2</Card.Title>
                   <Card.Text>
-                  Piezas fiables y duraderas para todas las marcas de motocicletas.
+                    Piezas fiables y duraderas para todas las marcas de motocicletas.
                   </Card.Text>
                   <Button variant="primary">View Details</Button>
                 </Card.Body>
@@ -80,11 +92,11 @@ const Home = () => {
             </div>
             <div>
               <Card>
-                <Card.Img variant="top" src="https://s.alicdn.com/@sc04/kf/H836d6cbebee0432a825651db9f0d075dO.jpg_300x300.jpg" />
+                <Card.Img variant="top" src="https://static.wixstatic.com/media/e09d1c_8bd83aa6b835437cba272a165b723ff2~mv2.png/v1/fill/w_300,h_300,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Caja%20y%20motor%20para%20motos.png" />
                 <Card.Body>
                   <Card.Title>Producto 3</Card.Title>
                   <Card.Text>
-                  Accesorios de primera calidad para mejorar su experiencia de conducción.
+                    Accesorios de primera calidad para mejorar su experiencia de conducción.
                   </Card.Text>
                   <Button variant="primary">View Details</Button>
                 </Card.Body>
@@ -96,7 +108,7 @@ const Home = () => {
                 <Card.Body>
                   <Card.Title>Producto 4</Card.Title>
                   <Card.Text>
-                  Producto de primera con las mejores prestaciones y calidad.
+                    Producto de primera con las mejores prestaciones y calidad.
                   </Card.Text>
                   <Button variant="primary">View Details</Button>
                 </Card.Body>
@@ -108,7 +120,7 @@ const Home = () => {
                 <Card.Body>
                   <Card.Title>Producto 5</Card.Title>
                   <Card.Text>
-                  Mejore el rendimiento de su moto con este producto de primera calidad.
+                    Mejore el rendimiento de su moto con este producto de primera calidad.
                   </Card.Text>
                   <Button variant="primary">View Details</Button>
                 </Card.Body>
@@ -129,7 +141,7 @@ const Home = () => {
             <Card.Body>
               <Card.Title>Producto destacado 1</Card.Title>
               <Card.Text>
-              Producto de primera con las mejores prestaciones y calidad.
+                Producto de primera con las mejores prestaciones y calidad.
               </Card.Text>
               <Button variant="primary">View Details</Button>
             </Card.Body>
@@ -141,7 +153,7 @@ const Home = () => {
             <Card.Body>
               <Card.Title>Producto destacado 2</Card.Title>
               <Card.Text>
-              Mejore el rendimiento de su moto con este producto de primera calidad.
+                Mejore el rendimiento de su moto con este producto de primera calidad.
               </Card.Text>
               <Button variant="primary">View Details</Button>
             </Card.Body>
@@ -153,7 +165,7 @@ const Home = () => {
             <Card.Body>
               <Card.Title>Producto destacado 3</Card.Title>
               <Card.Text>
-              La mejor elección por su durabilidad y fiabilidad.
+                La mejor elección por su durabilidad y fiabilidad.
               </Card.Text>
               <Button variant="primary">View Details</Button>
             </Card.Body>
@@ -170,7 +182,7 @@ const Home = () => {
           <Card>
             <Card.Body>
               <Card.Text>
-              "Excelente servicio y productos de primera calidad. Mi moto funciona mejor que nunca".
+                "Excelente servicio y productos de primera calidad. Mi moto funciona mejor que nunca".
               </Card.Text>
               <Card.Footer>- Customer 1</Card.Footer>
             </Card.Body>
@@ -180,7 +192,7 @@ const Home = () => {
           <Card>
             <Card.Body>
               <Card.Text>
-              "Un gran lugar para encontrar lo que necesitas para tu moto. Muy recomendable".
+                "Un gran lugar para encontrar lo que necesitas para tu moto. Muy recomendable".
               </Card.Text>
               <Card.Footer>- Customer 2</Card.Footer>
             </Card.Body>
@@ -190,7 +202,7 @@ const Home = () => {
           <Card>
             <Card.Body>
               <Card.Text>
-              "Fantásticos productos a precios inmejorables. Mi tienda de referencia para piezas de bicicleta".
+                "Fantásticos productos a precios inmejorables. Mi tienda de referencia para piezas de bicicleta".
               </Card.Text>
               <Card.Footer>- Customer 3</Card.Footer>
             </Card.Body>

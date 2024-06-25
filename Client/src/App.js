@@ -5,6 +5,7 @@ import AuthContainer from './components/AuthContainer';
 import Inventory from './pages/Inventory';
 import Profile from './pages/Profile';
 import Navbar from './components/Navbar';
+import ForgotPass from './pages/ForgotPassword'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/auth" element={<AuthContainer />} />
           <Route path="/inventory" element={<Inventory />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path='/forgot-password' element={<ForgotPass/>} /> 
         </Routes>
       </div>
     </Router>

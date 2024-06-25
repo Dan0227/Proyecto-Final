@@ -1,44 +1,47 @@
-import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap'; 
-import { Link } from 'react-router-dom';
+// src/pages/Login.js
+
+import React, { useState, useContext } from 'react';
+import { Form, Button } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
+import AuthContext from '../context/AuthContext';
+import { login as loginService } from '../services/api';
 import '../styles/pages/Login.css';
 
 const Login = () => {
+  const { login } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
 
     if (!email || !password) {
-      setError('Please fill in all fields');
+      setError('Por favor complete todos los campos');
       setLoading(false);
       return;
     }
 
-    setTimeout(() => {
+    try {
+      const response = await loginService(email, password);
+      login(response.token, response.id_rol);
       setLoading(false);
-      if (email === 'user@example.com' && password === 'password') {
-        console.log('Login successful');
-      } else {
-        setError('Invalid email or password');
-      }
-    }, 2000);
-  };
-
-  const handleCloseAlert = () => {
-    setError('');
+      navigate('/');
+    } catch (error) {
+      setError('Correo electrónico o contraseña incorrectos');
+      setLoading(false);
+    }
   };
 
   return (
     <Form onSubmit={handleLogin} className="login-form">
       <h2 className="text-center mb-4">Iniciar Sesión</h2>
       {error && (
-        <div className="custom-alert" onClick={handleCloseAlert}>
+        <div className="custom-alert" onClick={() => setError('')}>
           <div className="alert-content">
             {error}
           </div>
@@ -68,18 +71,10 @@ const Login = () => {
         className="login-button"
         disabled={loading}
       >
-        {loading ? 'Loading...' : 'Login'}
+        {loading ? 'Cargando...' : 'Iniciar Sesión'}
       </Button>
       <div className="text-center mb-3">
-        <Link to="/forgot-password" className="text-decoration-none">Forgot password?</Link>
-      </div>
-      <div className="social-login-buttons text-center">
-        <Button variant="link" className="social-button">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_Facebook_icon.svg/2048px-2023_Facebook_icon.svg.png" alt="Facebook" />
-        </Button>
-        <Button variant="link" className="social-button">
-          <img src="https://services.google.com/fh/files/misc/google_g_icon_download.png" alt="Google" />
-        </Button>
+        <Link to="/forgot-password" className="text-decoration-none">¿Olvidó su contraseña?</Link>
       </div>
     </Form>
   );

@@ -28,7 +28,7 @@ const Inventory = () => {
         setProducts(response);
       } catch (error) {
         console.error('Error al buscar productos:', error);
-        setError('Error al buscar productos');
+        setError('Error al buscar productos:');
       }
     };
     fetchProducts();
@@ -157,73 +157,73 @@ const Inventory = () => {
                 name="descripcion"
                 value={newProduct.descripcion}
                 onChange={handleInputChange}
-                placeholder="Agregar descripción del producto"
+                placeholder="Agregar Descripcion"
               />
             </Form.Group>
             <Form.Group controlId="precio">
-              <Form.Label>Precio del Producto</Form.Label>
+              <Form.Label>Product Price</Form.Label>
               <Form.Control
                 type="number"
                 name="precio"
                 value={newProduct.precio}
                 onChange={handleInputChange}
-                placeholder="Agregar precio del producto"
+                placeholder="Enter product price"
                 required
               />
             </Form.Group>
             <Form.Group controlId="stock">
-              <Form.Label>Stock del Producto</Form.Label>
+              <Form.Label>Product Stock</Form.Label>
               <Form.Control
                 type="number"
                 name="stock"
                 value={newProduct.stock}
                 onChange={handleInputChange}
-                placeholder="Agregar stock del producto"
+                placeholder="Enter product stock"
                 required
               />
             </Form.Group>
             <Form.Group controlId="id_categoria">
-              <Form.Label>ID de Categoría</Form.Label>
+              <Form.Label>Category ID</Form.Label>
               <Form.Control
                 type="number"
                 name="id_categoria"
                 value={newProduct.id_categoria}
                 onChange={handleInputChange}
-                placeholder="Agregar ID de categoría"
+                placeholder="Enter category ID"
               />
             </Form.Group>
             <Form.Group controlId="id_modelo">
-              <Form.Label>ID del Modelo</Form.Label>
+              <Form.Label>Model ID</Form.Label>
               <Form.Control
                 type="number"
                 name="id_modelo"
                 value={newProduct.id_modelo}
                 onChange={handleInputChange}
-                placeholder="Agregar ID del modelo"
+                placeholder="Enter model ID"
               />
             </Form.Group>
             <Form.Group controlId="id_proveedor">
-              <Form.Label>ID del Proveedor</Form.Label>
+              <Form.Label>Supplier ID</Form.Label>
               <Form.Control
                 type="number"
                 name="id_proveedor"
                 value={newProduct.id_proveedor}
                 onChange={handleInputChange}
-                placeholder="Agregar ID del proveedor"
+                placeholder="Enter supplier ID"
               />
             </Form.Group>
             <Form.Group controlId="descuento">
-              <Form.Label>Descuento</Form.Label>
+              <Form.Label>Discount</Form.Label>
               <Form.Control
                 type="number"
                 name="descuento"
                 value={newProduct.descuento}
                 onChange={handleInputChange}
-                placeholder="Agregar porcentaje de descuento"
+                placeholder="Enter discount percentage"
               />
             </Form.Group>
             <Form.Group controlId="foto_producto">
-              <Form.Label>Foto del Producto</Form.Label>
+              <Form.Label>Product Photo</Form.Label>
               <Form.Control
                 type="file"
                 name="foto_producto"
@@ -231,7 +231,7 @@ const Inventory = () => {
               />
             </Form.Group>
             <Button variant="primary" type="submit" className="w-100">
-              Agregar Producto
+              Add Product
             </Button>
           </Form>
         </Col>
@@ -251,10 +251,10 @@ const Inventory = () => {
               <Card.Body>
                 <Card.Title>{product.nombre}</Card.Title>
                 <Card.Text>
-                  <strong>Precio:</strong> ${product.precio}
+                  <strong>Price:</strong> ${product.precio}
                 </Card.Text>
                 <Button variant="primary" onClick={() => handleEditClick(product)}>
-                  Editar
+                  Edit
                 </Button>
               </Card.Body>
             </Card>
@@ -264,12 +264,12 @@ const Inventory = () => {
       {selectedProduct && (
         <Modal show={showModal} onHide={() => setShowModal(false)}>
           <Modal.Header closeButton>
-            <Modal.Title>Editar Producto</Modal.Title>
+            <Modal.Title>Edit Product</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form>
               <Form.Group controlId="modal_nombre">
-                <Form.Label>Nombre del Producto</Form.Label>
+                <Form.Label>Product Name</Form.Label>
                 <Form.Control
                   type="text"
                   name="nombre"
@@ -278,7 +278,7 @@ const Inventory = () => {
                 />
               </Form.Group>
               <Form.Group controlId="modal_descripcion">
-                <Form.Label>Descripción del Producto</Form.Label>
+                <Form.Label>Product Description</Form.Label>
                 <Form.Control
                   as="textarea"
                   name="descripcion"
@@ -287,7 +287,7 @@ const Inventory = () => {
                 />
               </Form.Group>
               <Form.Group controlId="modal_precio">
-                <Form.Label>Precio del Producto</Form.Label>
+                <Form.Label>Product Price</Form.Label>
                 <Form.Control
                   type="number"
                   name="precio"
@@ -296,7 +296,7 @@ const Inventory = () => {
                 />
               </Form.Group>
               <Form.Group controlId="modal_stock">
-                <Form.Label>Stock del Producto</Form.Label>
+                <Form.Label>Product Stock</Form.Label>
                 <Form.Control
                   type="number"
                   name="stock"
@@ -305,7 +305,7 @@ const Inventory = () => {
                 />
               </Form.Group>
               <Form.Group controlId="modal_id_categoria">
-                <Form.Label>ID de Categoría</Form.Label>
+                <Form.Label>Category ID</Form.Label>
                 <Form.Control
                   type="number"
                   name="id_categoria"
@@ -314,7 +314,7 @@ const Inventory = () => {
                 />
               </Form.Group>
               <Form.Group controlId="modal_id_modelo">
-                <Form.Label>ID del Modelo</Form.Label>
+                <Form.Label>Model ID</Form.Label>
                 <Form.Control
                   type="number"
                   name="id_modelo"
@@ -323,7 +323,7 @@ const Inventory = () => {
                 />
               </Form.Group>
               <Form.Group controlId="modal_id_proveedor">
-                <Form.Label>ID del Proveedor</Form.Label>
+                <Form.Label>Supplier ID</Form.Label>
                 <Form.Control
                   type="number"
                   name="id_proveedor"
@@ -332,7 +332,7 @@ const Inventory = () => {
                 />
               </Form.Group>
               <Form.Group controlId="modal_descuento">
-                <Form.Label>Descuento</Form.Label>
+                <Form.Label>Discount</Form.Label>
                 <Form.Control
                   type="number"
                   name="descuento"
@@ -341,7 +341,7 @@ const Inventory = () => {
                 />
               </Form.Group>
               <Form.Group controlId="modal_foto_producto">
-                <Form.Label>Foto del Producto</Form.Label>
+                <Form.Label>Product Photo</Form.Label>
                 <Form.Control
                   type="file"
                   name="foto_producto"
@@ -352,13 +352,13 @@ const Inventory = () => {
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={() => setShowModal(false)}>
-              Cerrar
+              Close
             </Button>
             <Button variant="danger" onClick={handleDelete}>
-              Eliminar
+              Delete
             </Button>
             <Button variant="primary" onClick={handleUpdate}>
-              Guardar Cambios
+              Save Changes
             </Button>
           </Modal.Footer>
         </Modal>

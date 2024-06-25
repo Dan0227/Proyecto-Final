@@ -99,3 +99,26 @@ export const deleteProduct = async (id_producto) => {
     }
   }
 };
+
+// Nueva función para iniciar sesión con Google o Facebook
+export const socialLogin = async (provider, token) => {
+  try {
+    const response = await axios.post(`${API_URL}/usuarios/social-login`, {
+      provider,
+      token,
+    });
+    return response.data; // Devuelve los datos del servidor si la solicitud tiene éxito
+  } catch (error) {
+    // Manejo de errores
+    if (error.response) {
+      console.error('Error en la autenticación social:', error.response.data);
+      throw new Error(error.response.data.message || 'Error en la autenticación social');
+    } else if (error.request) {
+      console.error('No se recibió respuesta del servidor:', error.request);
+      throw new Error('No se recibió respuesta del servidor');
+    } else {
+      console.error('Error al configurar la solicitud:', error.message);
+      throw new Error('Error al configurar la solicitud');
+    }
+  }
+};

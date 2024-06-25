@@ -1,44 +1,62 @@
-import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap'; 
+import React, { useState, useEffect } from 'react';
+import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import { login, socialLogin } from '../services/api';
 import '../styles/pages/Login.css';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [correo_electronico, setCorreoElectronico] = useState('');
+  const [contraseña, setContraseña] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
 
-    if (!email || !password) {
-      setError('Please fill in all fields');
+    if (!correo_electronico || !contraseña) {
+      setError('Por favor rellene todos los campos');
       setLoading(false);
       return;
     }
 
-    setTimeout(() => {
+    try {
+      const data = await login(correo_electronico, contraseña);
+      localStorage.setItem('token', data.token);
+    } catch (err) {
+      setError(err.message);
+    } finally {
       setLoading(false);
-      if (email === 'user@example.com' && password === 'password') {
-        console.log('Login successful');
-      } else {
-        setError('Invalid email or password');
-      }
-    }, 2000);
+    }
   };
 
-  const handleCloseAlert = () => {
-    setError('');
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => {
+        setError('');
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
+
+  const handleGoogleLogin = async (response) => {
+    if (response.credential) {
+      try {
+        const data = await socialLogin('google', response.credential);
+        localStorage.setItem('token', data.token);
+      } catch (err) {
+        setError('Error al iniciar sesión con Google');
+      }
+    }
   };
 
   return (
     <Form onSubmit={handleLogin} className="login-form">
       <h2 className="text-center mb-4">Iniciar Sesión</h2>
       {error && (
-        <div className="custom-alert" onClick={handleCloseAlert}>
+        <div className="custom-alert" onClick={() => setError('')}>
           <div className="alert-content">
             {error}
           </div>
@@ -48,8 +66,8 @@ const Login = () => {
         <Form.Control
           type="email"
           placeholder="Correo Electrónico"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={correo_electronico}
+          onChange={(e) => setCorreoElectronico(e.target.value)}
           className="rounded-input"
         />
       </Form.Group>
@@ -57,8 +75,8 @@ const Login = () => {
         <Form.Control
           type="password"
           placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={contraseña}
+          onChange={(e) => setContraseña(e.target.value)}
           className="rounded-input"
         />
       </Form.Group>
@@ -68,18 +86,21 @@ const Login = () => {
         className="login-button"
         disabled={loading}
       >
-        {loading ? 'Loading...' : 'Login'}
+        {loading ? 'Cargando...' : 'Iniciar Sesion'}
       </Button>
       <div className="text-center mb-3">
-        <Link to="/forgot-password" className="text-decoration-none">Forgot password?</Link>
+        <Link to="/forgot-password" className="text-decoration-none">¿Ha olvidado su contraseña?</Link>
       </div>
-      <div className="social-login-buttons text-center">
-        <Button variant="link" className="social-button">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_Facebook_icon.svg/2048px-2023_Facebook_icon.svg.png" alt="Facebook" />
-        </Button>
-        <Button variant="link" className="social-button">
-          <img src="https://services.google.com/fh/files/misc/google_g_icon_download.png" alt="Google" />
-        </Button>
+      <div className="social-login-buttons">
+        <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID">
+          <GoogleLogin
+            onSuccess={handleGoogleLogin}
+            onError={() => setError('Error al iniciar sesión con Google')}
+            useOneTap
+            text="Iniciar sesión con Google"
+            className="social-button google-button"
+          />
+        </GoogleOAuthProvider>
       </div>
     </Form>
   );

@@ -1,5 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const axios = require('axios');
 const Usuario = require('../models/Usuario');
 
 const router = express.Router();
@@ -157,6 +158,56 @@ router.post('/login', async (req, res) => {
     res.json({ token });
   } catch (error) {
     console.error('Error logging in:', error);
+    res.status(500).json({ message: 'Error del servidor' });
+  }
+});
+
+// Login de usuario con Google
+router.post('/google-login', async (req, res) => {
+  const { token } = req.body;
+
+  try {
+    const googleResponse = await axios.get(`https://oauth2.googleapis.com/tokeninfo?id_token=${token}`);
+    const { email, sub: googleId } = googleResponse.data;
+
+    let user = await Usuario.getUserByEmail(email);
+    if (!user) {
+      user = await Usuario.create({
+        correo_electronico: email,
+        google_id: googleId,
+        // otros campos necesarios
+      });
+    }
+
+    const jwtToken = jwt.sign({ userId: user.id_usuario, email: user.correo_electronico }, secretKey, { expiresIn: '1h' });
+    res.json({ token: jwtToken });
+  } catch (error) {
+    console.error('Error logging in with Google:', error);
+    res.status(500).json({ message: 'Error del servidor' });
+  }
+});
+
+// Login de usuario con Facebook
+router.post('/facebook-login', async (req, res) => {
+  const { token } = req.body;
+
+  try {
+    const facebookResponse = await axios.get(`https://graph.facebook.com/me?access_token=${token}&fields=email,id`);
+    const { email, id: facebookId } = facebookResponse.data;
+
+    let user = await Usuario.getUserByEmail(email);
+    if (!user) {
+      user = await Usuario.create({
+        correo_electronico: email,
+        facebook_id: facebookId,
+        // otros campos necesarios
+      });
+    }
+
+    const jwtToken = jwt.sign({ userId: user.id_usuario, email: user.correo_electronico }, secretKey, { expiresIn: '1h' });
+    res.json({ token: jwtToken });
+  } catch (error) {
+    console.error('Error logging in with Facebook:', error);
     res.status(500).json({ message: 'Error del servidor' });
   }
 });

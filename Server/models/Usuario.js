@@ -13,15 +13,17 @@ const Usuario = {
       telefono,
       direccion_envio,
       foto_perfil,
+      google_id,
+      facebook_id,
     } = data;
 
     const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(contraseña, salt);
+    const hashedPassword = contraseña ? await bcrypt.hash(contraseña, salt) : null;
 
     const [result] = await pool.query(
-      `INSERT INTO usuarios (username, nombre_usuario, apellido_usuario, contraseña, correo_electronico, id_rol, telefono, direccion_envio, foto_perfil) 
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      [username, nombre_usuario, apellido_usuario, hashedPassword, correo_electronico, id_rol, telefono, direccion_envio, foto_perfil]
+      `INSERT INTO usuarios (username, nombre_usuario, apellido_usuario, contraseña, correo_electronico, id_rol, telefono, direccion_envio, foto_perfil, google_id, facebook_id) 
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [username, nombre_usuario, apellido_usuario, hashedPassword, correo_electronico, id_rol, telefono, direccion_envio, foto_perfil, google_id, facebook_id]
     );
 
     return result.insertId;
@@ -48,10 +50,12 @@ const Usuario = {
       telefono,
       direccion_envio,
       foto_perfil,
+      google_id,
+      facebook_id,
     } = data;
 
-    let updateQuery = `UPDATE usuarios SET username = ?, nombre_usuario = ?, apellido_usuario = ?, correo_electronico = ?, id_rol = ?, telefono = ?, direccion_envio = ?, foto_perfil = ?`;
-    const updateValues = [username, nombre_usuario, apellido_usuario, correo_electronico, id_rol, telefono, direccion_envio, foto_perfil];
+    let updateQuery = `UPDATE usuarios SET username = ?, nombre_usuario = ?, apellido_usuario = ?, correo_electronico = ?, id_rol = ?, telefono = ?, direccion_envio = ?, foto_perfil = ?, google_id = ?, facebook_id = ?`;
+    const updateValues = [username, nombre_usuario, apellido_usuario, correo_electronico, id_rol, telefono, direccion_envio, foto_perfil, google_id, facebook_id];
 
     if (contraseña) {
       const salt = await bcrypt.genSalt(10);
@@ -74,6 +78,16 @@ const Usuario = {
 
   async getUserByEmail(email) {
     const [results] = await pool.query('SELECT * FROM usuarios WHERE correo_electronico = ?', [email]);
+    return results[0];
+  },
+
+  async getUserByGoogleId(google_id) {
+    const [results] = await pool.query('SELECT * FROM usuarios WHERE google_id = ?', [google_id]);
+    return results[0];
+  },
+
+  async getUserByFacebookId(facebook_id) {
+    const [results] = await pool.query('SELECT * FROM usuarios WHERE facebook_id = ?', [facebook_id]);
     return results[0];
   },
 
